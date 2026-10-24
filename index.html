@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penentu Nilai Huruf</title>
+</head>
+<body>
+    <h2>Penentu Nilai Huruf</h2>
+    <label for="nilai">Masukkan Nilai (0-100)</label>
+    <input type="number" id="nilai" placeholder="Contoh: 85">
+    <button onclick="cekNilai()">Cek</button>
+
+    <p id="hasil"></p>
+
+    <script>
+        function cekNilai() {
+            const hasil = document.getElementById("hasil");
+            const input = document.getElementById("nilai").value;
+            const nilai = Number(input);
+
+            if (input === "" || nilai < 0 || nilai > 100) {
+                hasil.textContent = "Masukkan nilai antara 0 sampai 100";
+                return;
+            }
+
+            let grade = "";
+            switch (true) {
+                case nilai >= 90:
+                    grade = "A = Sangat Baik";
+                    break;
+                case nilai >= 80:
+                    grade = "B = Baik";
+                    break;
+                case nilai >= 70:
+                    grade = "C = Cukup Baik";
+                    break;
+                default:
+                    grade = "D = Perlu Belajar Lagi";
+            }
+
+            hasil.textContent = "Nilai Kamu: " + grade;
+        }
+    </script>
+</body>
+</html>
